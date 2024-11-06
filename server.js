@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 const corsOptions = {
   origin: 'https://dev-pavithan-tech-e-website-frontend.vercel.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true
 };
 
