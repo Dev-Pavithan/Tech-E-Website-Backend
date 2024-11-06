@@ -64,13 +64,13 @@ import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
-import errorHandler from './middleware/errorHandler.js';
-import paymentRoutes from './routes/paymentRoutes.js'; 
-import authRoutes from './routes/authRoutes.js';
-import contactRoutes from './routes/contactRoutes.js';
-import loginRoutes from './routes/loginRoutes.js';
-import packageRoutes from './routes/packageRoutes.js';
-import imageRoutes from './routes/imageRoutes.js';  
+import errorHandler from '../middleware/errorHandler.js';
+import paymentRoutes from '../routes/paymentRoutes.js'; 
+import authRoutes from '../routes/authRoutes.js';
+import contactRoutes from '../routes/contactRoutes.js';
+import loginRoutes from '../routes/loginRoutes.js';
+import packageRoutes from '../routes/packageRoutes.js';
+import imageRoutes from '../routes/imageRoutes.js';  
 
 dotenv.config();
 
