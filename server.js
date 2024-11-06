@@ -1,62 +1,4 @@
-// // server.js
-// import express from 'express';
-// import morgan from 'morgan';
-// import cors from 'cors';
-// import cookieParser from 'cookie-parser';
-// import mongoose from 'mongoose';
-// import dotenv from 'dotenv';
-// import helmet from 'helmet';
-// import errorHandler from './middleware/errorHandler.js';
-// import paymentRoutes from './routes/paymentRoutes.js'; 
-// import authRoutes from './routes/authRoutes.js';
-// import contactRoutes from './routes/contactRoutes.js';
-// import loginRoutes from './routes/loginRoutes.js';
-// import packageRoutes from './routes/packageRoutes.js';
-// import imageRoutes from './routes/imageRoutes.js';  
-
-
-// dotenv.config();
-
-// const app = express();
-
-// // Middleware
-// app.use(express.json());
-// app.use(morgan('dev'));
-// const corsOptions = {
-//   origin: 'https://dev-pavithan-tech-e-website-frontend.vercel.app',
-//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-//   credentials: true
-// };
-
-// app.use(cors(corsOptions));
-// app.use(cookieParser());
-// app.use(helmet());
-
-// // Connect to MongoDB
-// mongoose.connect(process.env.MONGO_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   serverSelectionTimeoutMS: 30000,
-// })
-// .then(() => console.log('MongoDB Connected'))
-// .catch(err => console.error('MongoDB connection error:', err));
-
-// // Use routes
-// app.use('/user', authRoutes);
-// app.use('/login', loginRoutes);
-// app.use('/contact', contactRoutes);
-// app.use('/api/packages', packageRoutes);
-// app.use('/api/payments', paymentRoutes);
-// app.use('/api/images', imageRoutes); 
-// // app.use('/api/admin-settings', adminSettingsRoutes);
-
-
-// // Custom error handling middleware
-// app.use(errorHandler);
-
-// const PORT = process.env.PORT || 7100;
-// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
+// server.js
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
@@ -72,6 +14,7 @@ import loginRoutes from './routes/loginRoutes.js';
 import packageRoutes from './routes/packageRoutes.js';
 import imageRoutes from './routes/imageRoutes.js';  
 
+
 dotenv.config();
 
 const app = express();
@@ -79,13 +22,10 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(morgan('dev'));
-const corsOptions = {
-  origin: 'https://dev-pavithan-tech-e-website-frontend.vercel.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true
-};
-
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: 'https://dev-pavithan-tech-e-website-frontend.vercel.app/',
+  credentials: true,
+}));
 app.use(cookieParser());
 app.use(helmet());
 
@@ -98,20 +38,18 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.error('MongoDB connection error:', err));
 
-// Root route to display the success message
-app.get('/', (req, res) => {
-  res.send('Backend Host Successfully');
-});
-
-// Use other routes
+// Use routes
 app.use('/user', authRoutes);
 app.use('/login', loginRoutes);
 app.use('/contact', contactRoutes);
 app.use('/api/packages', packageRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/images', imageRoutes); 
+// app.use('/api/admin-settings', adminSettingsRoutes);
+
 
 // Custom error handling middleware
 app.use(errorHandler);
 
-export default app;
+const PORT = process.env.PORT || 7100;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
