@@ -97,7 +97,12 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.error('MongoDB connection error:', err));
 
-// Use routes
+// Root route to display the success message
+app.get('/', (req, res) => {
+  res.send('Backend Host Successfully');
+});
+
+// Use other routes
 app.use('/user', authRoutes);
 app.use('/login', loginRoutes);
 app.use('/contact', contactRoutes);
